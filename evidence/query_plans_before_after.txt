@@ -1,0 +1,45 @@
+Q1_member_active_loans BEFORE
+8 | 0 | 0 | SEARCH m USING INTEGER PRIMARY KEY (rowid=?)
+12 | 0 | 0 | SCAN li USING INDEX ux_one_active_loan_per_copy
+15 | 0 | 0 | SEARCH l USING INTEGER PRIMARY KEY (rowid=?)
+20 | 0 | 0 | SEARCH bc USING INTEGER PRIMARY KEY (rowid=?)
+23 | 0 | 0 | SEARCH b USING INTEGER PRIMARY KEY (rowid=?)
+33 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q2_overdue_active BEFORE
+5 | 0 | 0 | SCAN li USING INDEX ux_one_active_loan_per_copy
+10 | 0 | 0 | SEARCH l USING INTEGER PRIMARY KEY (rowid=?)
+19 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q3_popular_titles BEFORE
+10 | 0 | 0 | SCAN li
+12 | 0 | 0 | SEARCH bc USING INTEGER PRIMARY KEY (rowid=?)
+15 | 0 | 0 | SEARCH b USING INTEGER PRIMARY KEY (rowid=?)
+18 | 0 | 0 | USE TEMP B-TREE FOR GROUP BY
+60 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q4_title_prefix BEFORE
+4 | 0 | 0 | SCAN books
+21 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q1_member_active_loans AFTER
+8 | 0 | 0 | SEARCH m USING INTEGER PRIMARY KEY (rowid=?)
+12 | 0 | 0 | SEARCH l USING COVERING INDEX idx_loans_member (member_id=?)
+18 | 0 | 0 | SEARCH li USING INDEX idx_loan_items_active_loan (loan_id=?)
+23 | 0 | 0 | SEARCH bc USING INTEGER PRIMARY KEY (rowid=?)
+26 | 0 | 0 | SEARCH b USING INTEGER PRIMARY KEY (rowid=?)
+37 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q2_overdue_active AFTER
+5 | 0 | 0 | SEARCH li USING INDEX idx_loan_items_active_due (due_on<?)
+12 | 0 | 0 | SEARCH l USING INTEGER PRIMARY KEY (rowid=?)
+
+Q3_popular_titles AFTER
+10 | 0 | 0 | SCAN b
+12 | 0 | 0 | SEARCH bc USING COVERING INDEX idx_book_copies_book (book_id=?)
+16 | 0 | 0 | SEARCH li USING COVERING INDEX idx_loan_items_copy (copy_id=?)
+55 | 0 | 0 | USE TEMP B-TREE FOR ORDER BY
+
+Q4_title_prefix AFTER
+4 | 0 | 0 | SEARCH books USING COVERING INDEX idx_books_title_nocase (title>? AND title<?)
+

@@ -1,0 +1,16 @@
+DATABASE BUILD: PASS
+{
+  "seed_database_counts": {
+    "members": 3,
+    "staff": 2,
+    "authors": 5,
+    "books": 5,
+    "book_authors": 5,
+    "book_copies": 7,
+    "loans": 3,
+    "loan_items": 4
+  },
+  "foreign_key_check": "PASS",
+  "sqlite_version": "3.46.1",
+  "database_file": "data/library.db"
+}

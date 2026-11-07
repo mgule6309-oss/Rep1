@@ -1,0 +1,7 @@
+{
+  "books": 1000,
+  "copies": 1500,
+  "members": 3000,
+  "loans": 8000,
+  "loan_items": 12000
+}

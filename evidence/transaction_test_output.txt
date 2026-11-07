@@ -1,0 +1,4 @@
+PASS: successful issue committed copy status, loan header and loan item
+PASS: unavailable copy rejected without partial loan record
+PASS: late CHECK failure rolled back status and loan header
+PASS: invalid copy status rejected by CHECK constraint

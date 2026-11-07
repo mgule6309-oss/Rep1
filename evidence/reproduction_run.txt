@@ -1,0 +1,21 @@
+Database build: PASS
+{'members': 3, 'staff': 2, 'authors': 5, 'books': 5, 'book_authors': 5, 'book_copies': 7, 'loans': 3, 'loan_items': 4}
+PASS: successful issue committed copy status, loan header and loan item
+PASS: unavailable copy rejected without partial loan record
+PASS: late CHECK failure rolled back status and loan header
+PASS: invalid copy status rejected by CHECK constraint
+Synthetic benchmark rows: {'books': 1000, 'copies': 1500, 'members': 3000, 'loans': 8000, 'loan_items': 12000}
+Query timing medians (milliseconds; 15 runs each):
+{'query': 'Q1_member_active_loans', 'before_median_ms': 0.1288, 'after_median_ms': 0.0065, 'change_percent': -95.0, 'before_min_ms': 0.1269, 'before_max_ms': 0.146, 'after_min_ms': 0.0062, 'after_max_ms': 0.0121}
+{'query': 'Q2_overdue_active', 'before_median_ms': 0.19, 'after_median_ms': 0.0974, 'change_percent': -48.7, 'before_min_ms': 0.1879, 'before_max_ms': 0.2104, 'after_min_ms': 0.0944, 'after_max_ms': 0.1501}
+{'query': 'Q3_popular_titles', 'before_median_ms': 2.858, 'after_median_ms': 1.1884, 'change_percent': -58.4, 'before_min_ms': 2.8178, 'before_max_ms': 3.6333, 'after_min_ms': 1.1666, 'after_max_ms': 1.3282}
+{'query': 'Q4_title_prefix', 'before_median_ms': 0.0778, 'after_median_ms': 0.0209, 'change_percent': -73.1, 'before_min_ms': 0.0769, 'before_max_ms': 0.101, 'after_min_ms': 0.0205, 'after_max_ms': 0.0416}
+Query plans written to evidence/query_plans_before_after.txt
+
+$ /opt/pyvenv/bin/python /mnt/data/mit8103_fresh/MIT8103_Community_Library_Portfolio/scripts/build_database.py
+
+$ /opt/pyvenv/bin/python /mnt/data/mit8103_fresh/MIT8103_Community_Library_Portfolio/scripts/test_transactions.py
+
+$ /opt/pyvenv/bin/python /mnt/data/mit8103_fresh/MIT8103_Community_Library_Portfolio/scripts/run_query_analysis.py
+
+ALL LOCAL SQLITE CHECKS: PASS

@@ -1,0 +1,7 @@
+Synthetic benchmark rows: {'books': 1000, 'copies': 1500, 'members': 3000, 'loans': 8000, 'loan_items': 12000}
+Query timing medians (milliseconds; 15 runs each):
+{'query': 'Q1_member_active_loans', 'before_median_ms': 0.1867, 'after_median_ms': 0.0081, 'change_percent': -95.7, 'before_min_ms': 0.1495, 'before_max_ms': 0.8509, 'after_min_ms': 0.0077, 'after_max_ms': 0.0373}
+{'query': 'Q2_overdue_active', 'before_median_ms': 0.2875, 'after_median_ms': 0.1738, 'change_percent': -39.5, 'before_min_ms': 0.2545, 'before_max_ms': 0.5253, 'after_min_ms': 0.1455, 'after_max_ms': 0.2697}
+{'query': 'Q3_popular_titles', 'before_median_ms': 4.163, 'after_median_ms': 1.7765, 'change_percent': -57.3, 'before_min_ms': 3.6644, 'before_max_ms': 6.0374, 'after_min_ms': 1.5617, 'after_max_ms': 2.1436}
+{'query': 'Q4_title_prefix', 'before_median_ms': 0.1007, 'after_median_ms': 0.0299, 'change_percent': -70.3, 'before_min_ms': 0.097, 'before_max_ms': 0.1922, 'after_min_ms': 0.0297, 'after_max_ms': 0.0592}
+Query plans written to evidence/query_plans_before_after.txt
