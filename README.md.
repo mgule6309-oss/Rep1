@@ -1,0 +1,75 @@
+MIT 8103 Advanced Database Systems
+
+Community Library Management System Portfolio
+
+This repository contains five portfolio activities demonstrating database design, query optimisation, transaction management, NoSQL modelling, and distributed database architecture.
+portfolio-1-database-design/
+    normalisation.md
+
+portfolio-2-query-optimisation/
+    analysis_notes.md
+
+portfolio-3-transactions-concurrency/
+    concurrency-notes.md
+    issue_book.py
+
+portfolio-4-nosql/
+    loan_document.json
+    mongodb_examples.js
+
+portfolio-5-distributed-cloud/
+    architecture.md
+
+scripts/
+    build_database.py
+    issue_book.py
+    run_all_checks.py
+    run_query_analysis.py
+    test_transactions.py
+
+evidence/
+    benchmark_dataset_profile.json
+    benchmark_results.json
+    benchmark_summary.csv
+    build_validation.json
+    build_validation.txt
+    query_analysis_console.txt
+    query_analysis_interpretation
+    query_plans_before_after.txt
+    reproduction_run.txt
+    transaction_test_output.txt
+- Python 3\.10\+
+- SQLite and Python’s built\-in `sqlite3` module
+- MongoDB examples &#40;`mongosh` syntax&#41;
+- Relational database design, indexing, transactions, and distributed database architecture
+
+No third\-party Python packages are required for the SQLite implementation\.
+
+## Running the Project
+
+From the repository’s root directory, run:
+
+```bash
+python scripts/run_all_checks.py
+python scripts/build_database.py
+python scripts/test_transactions.py
+python scripts/run_query_analysis.py
+```
+
+## Implementation and Evidence
+
+The relational database implementation uses SQLite\. The evidence folder contains validation outputs, query plans, benchmark results, and transaction test output\.
+
+The benchmark uses a synthetic dataset containing 1,000 books, 1,500 copies, 3,000 members, 8,000 loan headers, and 12,000 loan\-item history rows\. Four query patterns were warmed up and measured 15 times\. Median timings and query plans were compared before and after indexing\. Results depend on the execution environment and are not production performance guarantees\.
+
+## Scope and Limitations
+
+- The SQLite implementation and local validation checks were executed\.
+- MongoDB commands are illustrative examples and were not executed against a MongoDB server\.
+- The two\-session concurrency scenario is a documented manual test plan, not an executed test\.
+- The distributed/cloud architecture is a proposal; no cloud resources or PostgreSQL cluster were deployed\.
+- The proposed RPO of five minutes and RTO of 60 minutes are design targets, not measured guarantees\.
+
+## Use of AI
+
+AI assistance was used to support organisation, drafting, and review of portfolio materials\. The submitted work should be checked and understood by the student, who remains responsible for its accuracy and content\.
