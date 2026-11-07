@@ -1,0 +1,27 @@
+{
+  "_id": "loan-2026-0002",
+  "member": {
+    "memberId": 2,
+    "name": "David Okafor",
+    "email": "david@example.test"
+  },
+  "processedBy": {
+    "staffId": 2,
+    "name": "Peter Musa"
+  },
+  "items": [
+    {
+      "copyId": 3,
+      "isbn": "9780435906941",
+      "title": "The Joys of Motherhood",
+      "issuedOn": "2026-10-20",
+      "dueOn": "2026-11-03",
+      "returnedOn": null
+    }
+  ],
+  "eventHistory": [
+    {"type": "LOAN_CREATED", "at": "2026-10-20T10:30:00Z", "channel": "desk"},
+    {"type": "REMINDER_SCHEDULED", "at": "2026-10-20T10:31:00Z", "channel": "email", "templateVersion": 2}
+  ],
+  "documentVersion": 1
+}
